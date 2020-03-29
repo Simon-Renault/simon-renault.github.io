@@ -2,12 +2,20 @@
 // Learn more: https://gridsome.org/docs/config
 
 module.exports = {
-  siteName: "Portfolio",
-  siteUrl: `https://www.itsnwa.com`,
+  siteName: "Simon Renault test blog",
+  siteUrl: ``,
   host: "0.0.0.0",
-  titleTemplate: "%s - NWA",
-  siteDescription: "Creative technologist",
+  titleTemplate: "%s - Simon Renault",
+  siteDescription: "Product designer",
   plugins: [
+    {
+        use: '@gridsome/plugin-critical',
+        options: {
+          paths: ['/'],
+          width: 1300,
+          height: 900
+        }
+    },
     {
       use: "@gridsome/source-filesystem",
       options: {

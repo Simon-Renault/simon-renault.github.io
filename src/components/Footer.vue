@@ -1,8 +1,7 @@
 <template>
     <footer class="footer">
-        <div class="container">
-            <span v-html="settings.footer" />
-        </div>
+       <g-link class="contact">Work with me !</g-link>
+       <p class="copyright">Copyright simon renault 2020</p>
     </footer>
 </template>
 
@@ -16,9 +15,22 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .footer {
-    font-size: 0.8rem;
-    padding: 6rem 0;
+    z-index: 1;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    .contact{
+        margin: 30px 10px 100px;
+        font-weight: 600;
+    }
+    .copyright{
+        color: #818181;
+        font-size: 14px;
+        font-weight: 300;
+    }
 }
 </style>

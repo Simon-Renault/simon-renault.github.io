@@ -1,83 +1,90 @@
 <template>
-    <header class="header" :class="{sticky: $route.path === '/' || $route.path.includes('/projects/')}">
-        <div class="container">
-            <div class="left">
-                <g-link :to="{ name: 'home' }" class="home-link">
-                    <img 
-                        src="../../static/logo.svg"
-                        :alt="settings.site_name" 
-                        class="logo"
-                    />
-                </g-link>
-            </div>
-            <nav class="nav right">
-                <g-link class="nav__link" to="/journal">Journal</g-link>
-                <g-link class="nav__link" to="/contact">Say Hi!</g-link>
-            </nav>
-        </div>
+    <header class="header fixed" :class="{'cool':isFixed}" >
+      
+           <img src="/img/logo.svg" alt="">
+           <nav>
+                <g-link to="" >Projets</g-link>
+                <g-link to="" >Projets</g-link>
+                <g-link to="" >Projets</g-link>
+                <g-link to="" >Projets</g-link>
+           </nav>
+            <g-link to="/about" >Contact me</g-link>
+      
+      
     </header>
 </template>
 
 <script>
+import { debounce,throttle } from 'lodash';
+
 export default {
   data() {
     return {
         logo: require("../../static/logo.svg"),
-        settings: require("../../data/theme.json")
+        settings: require("../../data/theme.json"),
+        isFixed: false
     }
+  },
+  mounted(){
+    const scroll_container = document.body
+
+    window.addEventListener('scroll', debounce((e)=>{
+        let dist =  window.pageYOffset;
+        let header_height = 50
+        if(dist > header_height &&  this.isFixed === false){
+            this.isFixed = true
+        }
+        if(dist < header_height && this.isFixed === true){
+             this.isFixed = false
+        }
+    },50));
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .header {
-    position: relative;
     height: 6rem;
     z-index: 10;
-}
-.header.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.header > .container {
-    display: flex;
-    align-items: center;
+    display:flex;
     justify-content: space-between;
-    height: 100%;
+    align-items: baseline;
+    padding: 30px 5%;
+    opacity: 0;
+    animation-name: appear;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    &.fixed{
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+    }
+    &.cool{
+        opacity: 1;
+        animation-name: disappear;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    nav{
+
+    }
+    a{
+        margin:10px;
+
+        font-weight: 600;
+    }
 }
-.home-link {
-    text-decoration: none;
+
+
+
+@keyframes appear {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
-.logo {
-    height: 1.5rem;
+@keyframes disappear {
+  0% {opacity:1;}
+  100% {opacity:0;}
 }
-.site-name {
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    text-transform: uppercase;   
-}
-.nav > * {
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    margin-top: 4px;
-    margin-right: 3rem;
-    padding-bottom: 4px;
-    border-bottom: 1px solid;
-    border-color: transparent;
-    transition: border 0.15s;
-}
-.nav > *:last-of-type {
-    margin: 0;
-}
-.nav > *:hover {
-    border-color: inherit;
-}
-.nav > .active {
-    border-color: inherit;
-}
+
 </style>
