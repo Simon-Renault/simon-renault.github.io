@@ -9,6 +9,5 @@ project_bg_color: "#DD3737"
 project_fg_color: "#E3E3E3"
 
 ---
-![](/uploads/markus-spiske-516263-unsplash.jpg)
 
 Hello the world !!!
