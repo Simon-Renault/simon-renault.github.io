@@ -55,11 +55,13 @@ export default {
     background-color: transparent;
     align-items: center;
     height:7rem;
-    transition: height .4s ease, box-shadow .5s ease , background-color .3s ease;
+    transition: height .4s ease, box-shadow .5s ease , background-color .3s ease,backdrop-filter .3s ease;
+    //backdrop-filter: blur(0px);
     &.fixed{
         height: 4rem;
-        background-color: white;
-        box-shadow: 0 0 10px 0px rgba(240,240,241,0.7) , 0 0 30px 0px rgba(240,240,241,0.7);
+        //backdrop-filter: blur(30px);
+        background-color: rgba(255,255,255,0.5);
+        box-shadow: 0 0 10px 0px rgba(0,0,0,0.03) , 0 0 30px 0px rgba(0,0,0,0.02);
         animation-name: slide;
         animation-duration: .5s;
         animation-fill-mode: forwards;
