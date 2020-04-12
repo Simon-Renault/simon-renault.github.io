@@ -1,15 +1,15 @@
 <template>
-    <header class="header fixed" :class="{'cool':isFixed}" >
+    <header class="header " :class="{'fixed':isFixed,'absolute':!isFixed}" >
       
            <img src="/img/logo.svg" alt="">
            <nav>
-                <g-link to="" >Projets</g-link>
-                <g-link to="" >Projets</g-link>
-                <g-link to="" >Projets</g-link>
-                <g-link to="" >Projets</g-link>
+                <g-link to="/"  class="link" >Design</g-link>
+                <g-link to="/x" class="link" >Blog</g-link>
+                <g-link to="/x" class="link" >Experiments</g-link>
+                <g-link to="/x" class="link" >Projets</g-link>
+                <g-link to="/x" class="link" >About</g-link>
            </nav>
-            <g-link to="/about" >Contact me</g-link>
-      
+            <g-link to="/about" class="link" >Contact me</g-link>
       
     </header>
 </template>
@@ -30,61 +30,62 @@ export default {
 
     window.addEventListener('scroll', debounce((e)=>{
         let dist =  window.pageYOffset;
-        let header_height = 50
+        let header_height = 3
         if(dist > header_height &&  this.isFixed === false){
             this.isFixed = true
         }
         if(dist < header_height && this.isFixed === true){
              this.isFixed = false
         }
-    },50));
+    },10));
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .header {
-    height: 6rem;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
     z-index: 10;
     display:flex;
+    padding: 0 4%;
     justify-content: space-between;
-    align-items: baseline;
-    padding: 30px 5%;
-    opacity: 0;
-    animation-name: appear;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
+    background-color: transparent;
+    align-items: center;
+    height:7rem;
+    transition: height .4s ease, box-shadow .5s ease , background-color .3s ease;
     &.fixed{
-        position: fixed;
-        top:0;
-        left:0;
-        right:0;
-    }
-    &.cool{
-        opacity: 1;
-        animation-name: disappear;
+        height: 4rem;
+        background-color: white;
+        box-shadow: 0 0 10px 0px rgba(240,240,241,0.7) , 0 0 30px 0px rgba(240,240,241,0.7);
+        animation-name: slide;
         animation-duration: .5s;
         animation-fill-mode: forwards;
     }
-    nav{
-
-    }
-    a{
-        margin:10px;
-
+    .link{
+        margin: 0 17px;
         font-weight: 600;
+        position: relative;
+        &::before{
+            content:'';
+            position: absolute;
+            height: 2px;
+            width:0%;
+            background: #000;
+            bottom: -5px;
+            transition: width .3s ease;
+        }
+        &:hover::before{
+            width:70%;
+        }
+        &.active::before{
+            width:70%;
+        }
     }
 }
 
 
-
-@keyframes appear {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
-@keyframes disappear {
-  0% {opacity:1;}
-  100% {opacity:0;}
-}
 
 </style>

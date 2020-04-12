@@ -22,6 +22,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     .contact{
         margin: 30px 10px 100px;

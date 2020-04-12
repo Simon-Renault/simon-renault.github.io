@@ -4,31 +4,7 @@
         <main class="main">
             <slot/>
           
-            <section class="section">
-                <div class="section__inner">
-                    <div class="tile loading v-3 h-3" >
-                        <g-image class="cover" src="https://images.unsplash.com/photo-1558980664-769d59546b3d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"></g-image>
-                    </div>
-                    <div class="tile loading"></div>
-                    <div class="tile loading"></div>
-                    <div class="tile loading"></div>
-                </div>
-            </section>
-
-             <section class="section">
-                <header class="section__header">
-                    <h2>What I bluit</h2>
-                    <p class="desc">
-                        I recently started to express myself trough writing. I have always liked to share knowledge and to teach, Medium is a place where I write about daily thoughts but also build courses.
-                    </p>
-                </header>
-                <div class="section__inner">
-                    <div class="tile loading v-3 h-3" ></div>
-                    <div class="tile loading"></div>
-                    <div class="tile loading v-2"></div>
-                   
-                </div>
-            </section>
+           
         
         </main>
         <Footer />
@@ -81,6 +57,24 @@ export default {
         grid-row: span 3;
     }
 }
+.grid{
+    display: grid;
+    &__header-section{
+        grid-gap:20px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 440px 200px 70px;
+        grid-auto-flow: dense;
+    }
+    &__list_3{
+        grid-gap:20px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: minmax(200px,440px);
+        grid-auto-flow: dense;
+    }
+}
+
+
+
 
 .g-image{
     &.cover{
@@ -107,7 +101,7 @@ p{
     margin: 10vh auto 0;
     flex-direction: column;
     align-items: center;
-    height: 90vh;
+    min-height: 90vh;
     justify-content: center;
     width: 78vw;
     display: grid;
@@ -118,11 +112,7 @@ p{
     }
     &__inner{
         width: 100%;
-        display: grid;
-        grid-gap: 20px;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 440px 200px 70px;
-        grid-auto-flow: dense;
+       
     }
 }
 .tile{
