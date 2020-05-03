@@ -21,8 +21,8 @@ sections:
 - type: document
   path: data/theme.json
   label: Theme config
-upload_dir: ''
-public_path: https://simon-renault-dev-bucket.s3.eu-west-2.amazonaws.com
+upload_dir: test
+public_path: https://simon-renault-dev-bucket.s3.eu-west-2.amazonaws.com/test
 front_matter_path: ''
 use_front_matter_path: false
 file_template: ":filename:"
